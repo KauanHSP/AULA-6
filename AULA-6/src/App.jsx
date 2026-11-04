@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 
-export default function ExemploUseEffect() {
-  const [horaCarregamento, setHoraCarregamento] = useState("");
-  const [contador, setContador] = useState(0);
-
+function Usuario({ nome }) {
   useEffect(() => {
-    console.log("Efeito executado!");
 
-    setHoraCarregamento(new Date().toLocaleTimeString());
+    console.log("Prop 'nome' mudou para:", nome);
+    
+  }, [nome]);
 
-  }, []);
+  return <h2>Usuário: {nome}</h2>;
+}
+
+export default function App() {
+  const [nome, setNome] = useState("Ana");
 
   return (
     <div>
-      <h2>Exemplo de useEffect</h2>
+      <Usuario nome={nome} />
 
-      <p>Hora carregada: {horaCarregamento}</p>
+      <button onClick={() => setNome("Bruno")}>
+        Alterar para Bruno
+      </button>
 
-      <p>Contador de renderizações: {contador}</p>
-
-      <button onClick={() => setContador(contador + 1)}>
-        teste de renderização por um evento
+      <button onClick={() => setNome("Carlos")}>
+        Alterar para Carlos
       </button>
     </div>
   );
