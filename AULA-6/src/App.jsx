@@ -1,29 +1,16 @@
-import { useEffect, useState } from "react";
+import ComponenteEmissor from "./components/ComponenteEmissor";
+import ComponenteReceptor from "./components/ComponenteReceptor";
 
-function Usuario({ nome }) {
-  useEffect(() => {
-
-    console.log("Prop 'nome' mudou para:", nome);
-    
-  }, [nome]);
-
-  return <h2>Usuário: {nome}</h2>;
-}
-
-export default function App() {
-  const [nome, setNome] = useState("Ana");
-
+function App() {
   return (
     <div>
-      <Usuario nome={nome} />
+      <h1>Exemplo Observer / Pub-Sub</h1>
 
-      <button onClick={() => setNome("Bruno")}>
-        Alterar para Bruno
-      </button>
+      <ComponenteEmissor />
 
-      <button onClick={() => setNome("Carlos")}>
-        Alterar para Carlos
-      </button>
+      <ComponenteReceptor />
     </div>
   );
 }
+
+export default App;
